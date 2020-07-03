@@ -6,10 +6,9 @@ class Customer
     attr_accessor :name, :funds
 
     def intialize(options)
-        @id = options['id'].to_i if options ['id']
+        @id = options['id'].to_i if options['id']
         @name = options['name']
-        @funds = options['funds']
-
+        @funds = options['funds'].to_i
     end
 
 end
