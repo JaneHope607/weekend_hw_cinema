@@ -43,4 +43,8 @@ class Ticket
         return data.map { |ticket| Ticket.new(ticket) } 
     end
 
+    def update()
+        
+    end
+
 end

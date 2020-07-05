@@ -34,10 +34,16 @@ class Film
     end
 
     def self.all()
+        sql = "SELECT * from films"
+        film_list = SqlRunner.run(sql)
+        return Film.map_items(film_list)
     end
 
     def self.map_items(data)
-        return data.map { |film| }
+        return data.map { |film| Film.new(film) }
     end
 
+    def update()
+    end
+    
 end
