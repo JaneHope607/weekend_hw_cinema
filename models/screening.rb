@@ -61,7 +61,7 @@ class Screening
         SqlRunner.run(sql)
     end
 
-    def capacity?()
+    def capacity()
         return @seats_available >= 0
     end
 
@@ -74,14 +74,25 @@ class Screening
     end
 
     def count_tickets_bought()
-        return self.tickets.count()
+        return tickets.count()
     end
 
     def reduce_seats()
         return @seats_available -= count_tickets_bought
     end
 
-    def
+    def films()
+        sql = "SELECT films.* FROM films
+        INNER JOIN tickets ON
+        tickets.film_id = films.id
+        WHERE screening_id = $1"
+        values = [@id]
+        films = SqlRunner.run(sql, values)
+        return Screening.map_items(films)
     end
+
+    # def get_film_price
+    #     return films.price.to_i
+    # end
 
 end

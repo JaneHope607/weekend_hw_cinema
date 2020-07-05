@@ -85,28 +85,28 @@ class Customer
     end
 
     def count_tickets()
-        return self.tickets.count()
+        return tickets.count()
     end
 
-    # Methods for buying tickets
+    # Methods for buying tickets (changed to screening instead of film as argument)
 
     def remove_funds(film)
         return @funds -= film.price.to_i
     end
 
-    def sufficient_funds?(film)
+    def sufficient_funds(film)
         return @funds >= film.price.to_i
     end
 
     def buy_ticket(film, screening)
-        return if !sufficient_funds?(film)
-        return if !screening.capacity?
+        return "Insufficient funds!" if !sufficient_funds(film)
+        return "Showing sold out!" if !screening.capacity
         remove_funds(film)
         update()
         new_ticket = Ticket.new({ 'customer_id' => @id, 'film_id' => film.id, 'screening_id' => screening.id })
         new_ticket.save()
         screening.reduce_seats()
-        return screening.count_tickets_bought()
+        screening.update()
         return new_ticket
     end
 
