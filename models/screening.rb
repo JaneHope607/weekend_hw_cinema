@@ -61,7 +61,7 @@ class Screening
         SqlRunner.run(sql)
     end
 
-    def capacity()
+    def capacity?()
         return @seats_available >= 0
     end
 
@@ -73,9 +73,12 @@ class Screening
         return Screening.map_items(tickets)
     end
 
-    # def reduce_seats()
-    #     customer.buy_ticket
-    #     return @seats_available -= 
-    # end
+    def count_tickets_bought()
+        return self.tickets.count()
+    end
+
+    def reduce_seats()
+        return @seats_available -= count_tickets_bought
+    end
 
 end

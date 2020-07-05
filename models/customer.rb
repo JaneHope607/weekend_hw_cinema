@@ -100,11 +100,12 @@ class Customer
 
     def buy_ticket(film)
         return if !sufficient_funds?(film)
-        return if !capacity
+        return if !screening.capacity?
         remove_funds(film)
         update()
         new_ticket = Ticket.new({ 'customer_id' => @id, 'film_id' => film.id })
         new_ticket.save()
+        screening.reduce_seats()
         return new_ticket
     end
 
