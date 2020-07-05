@@ -11,6 +11,8 @@ class Customer
         @funds = options['funds'].to_i
     end
 
+    # Create method
+
     def save()
         sql = "INSERT INTO customers
         (name, funds)
@@ -20,6 +22,16 @@ class Customer
         result = SqlRunner.run(sql, values).first
         @id = result['id'].to_i
     end
+
+    # Read method
+
+    def self.all()
+        sql = "SELECT * FROM customers"
+        customer_list = SqlRunner.run(sql)
+        return Customer.map_items(customer_list)
+    end
+
+    # Delete methods
 
     def self.delete_all()
         sql = "DELETE FROM customers"
@@ -33,11 +45,7 @@ class Customer
         SqlRunner.run(sql, values)
     end
 
-    def self.all()
-        sql = "SELECT * FROM customers"
-        customer_list = SqlRunner.run(sql)
-        return Customer.map_items(customer_list)
-    end
+    # Update method
 
     def update()
         sql = "UPDATE customers
@@ -47,6 +55,8 @@ class Customer
         values = [@name, @funds, @id]
         SqlRunner.run(sql, values)
     end
+
+    # Show which films a customer has booked to see
 
     def films()
         sql = "SELECT films.* FROM films
@@ -58,9 +68,13 @@ class Customer
         return Film.map_items(films)
     end
 
+    # Map method
+
     def self.map_items(data)
         return data.map { |customer| Customer.new(customer) }
     end
+
+    # Check how many tickets bought by customer
 
     def tickets()
         sql = "SELECT * FROM tickets
@@ -73,6 +87,8 @@ class Customer
     def count_tickets()
         return self.tickets.count()
     end
+
+    # Methods for buying tickets
 
     def remove_funds(film)
         return @funds -= film.price.to_i
