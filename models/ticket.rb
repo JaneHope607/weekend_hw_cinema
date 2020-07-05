@@ -53,12 +53,11 @@ class Ticket
     end
 
     def create_ticket(customer, film)
-        sql = "SELECT * FROM tickets"
+        ticket = Ticket.new
     end
 
     def sell_ticket(customer, film)
-        sql = "INSERT INTO tickets
-        "
+
     end
 
 end

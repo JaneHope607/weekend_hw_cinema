@@ -74,10 +74,12 @@ class Customer
         return self.tickets.count()
     end
 
-    def funds(film)
-        return true if @funds > film.price
-        return false if @funds < film.price
+    def remove_funds(cost)
+        return @funds -= cost
     end
 
+    def sufficient_funds(film)
+        return 
+    end
 
 end
