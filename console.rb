@@ -36,7 +36,14 @@ ticket3.save()
 
 customer4.delete()
 
+customer3.name = 'Jessica Joe'
+customer3.update()
 
+film1.price = '14'
+film1.update()
+
+ticket2.film_id = film3.id
+ticket2.update()
 
 binding.pry
 nil
