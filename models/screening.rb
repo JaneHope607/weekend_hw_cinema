@@ -12,6 +12,8 @@ class Screening
         @seats_available = options['seats_available'].to_i
     end
 
+    # Create method
+
     def save()
         sql = "INSERT INTO screenings
         (film_id, time, seats_available)
@@ -21,5 +23,22 @@ class Screening
         result = SqlRunner.run(sql, values).first
         @id = result['id'].to_i
     end
+
+    # Read method
+
+    def self.map_items(data)
+        return data.map { |screening| Screening.new(screening) }
+    end
+
+    def self.all()
+        sql = "SELECT * FROM screenings"
+        screenings = SqlRunner.run(sql)
+        return Screening.map_items(screenings)
+    end
+
+    # Update method
+
+    # def update()
+    # end
 
 end
