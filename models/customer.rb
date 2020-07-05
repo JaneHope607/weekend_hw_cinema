@@ -5,7 +5,7 @@ class Customer
     attr_reader :id
     attr_accessor :name, :funds
 
-    def intialize(options)
+    def initialize(options)
         @id = options['id'].to_i if options['id']
         @name = options['name']
         @funds = options['funds'].to_i
@@ -17,7 +17,7 @@ class Customer
         VALUES ($1, $2)
         RETURNING id"
         values = [@name, @funds]
-        result = SqlRunner.run(sql, values)
+        result = SqlRunner.run(sql, values).first
         @id = user['id'].to_i
     end
 
