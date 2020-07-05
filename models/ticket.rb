@@ -52,7 +52,7 @@ class Ticket
         SqlRunner.run(sql, values)
     end
 
-    def get_ticket(customer, film)
+    def create_ticket(customer, film)
         sql = "SELECT * FROM tickets"
     end
 

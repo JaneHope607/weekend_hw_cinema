@@ -79,8 +79,5 @@ class Customer
         return false if @funds < film.price
     end
 
-    def buy_ticket(film)
-        return @funds -= film.price
-    end
 
 end
