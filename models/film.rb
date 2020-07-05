@@ -33,4 +33,11 @@ class Film
         SqlRunner.run(sql, values)
     end
 
+    def self.all()
+    end
+
+    def self.map_items(data)
+        return data.map { |film| }
+    end
+
 end
