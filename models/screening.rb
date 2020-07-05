@@ -70,7 +70,7 @@ class Screening
         WHERE screening_id = $1"
         values = [@id]
         tickets = SqlRunner.run(sql, values)
-        return Screening.map_items(tickets)
+        return Ticket.map_items(tickets)
     end
 
     def count_tickets_bought()
@@ -81,18 +81,13 @@ class Screening
         return @seats_available -= count_tickets_bought
     end
 
-    def films()
-        sql = "SELECT films.* FROM films
-        INNER JOIN tickets ON
-        tickets.film_id = films.id
-        WHERE screening_id = $1"
-        values = [@id]
+    def film_price()
+        sql = "SELECT * FROM films
+        WHERE id = $1"
+        values = [@film_id]
         films = SqlRunner.run(sql, values)
-        return Screening.map_items(films)
+        result = Film.map_items(films).first
+        return result.price.to_i
     end
-
-    # def get_film_price
-    #     return films.price.to_i
-    # end
 
 end
