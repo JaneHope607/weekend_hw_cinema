@@ -11,17 +11,21 @@ customer2.save()
 customer3 = Customer.new({ 'name' => 'Louis Ross', 'funds' => '15' })
 customer3.save()
 
-# film1 = Film.new
+film1 = Film.new({ 'title' => 'Mulan', 'price' => '10'})
+film1.save()
+film2 = Film.new({ 'title' => 'Knives Out', 'price' => '12' })
+film2.save()
+film3 = Film.new({ 'title' => 'Dunkirk', 'price' => '8' })
+film3.save()
+film4 = Film.new({ 'title' => '1917', 'price' => '6' })
+film4.save()
 
-# film2 = Film.new
+ticket1 = Ticket.new({ 'customer_id' => customer2.id, 'film_id' => film1.id })
+ticket1.save()
+ticket2 = Ticket.new({ 'customer_id' => customer1.id, 'film_id' => film2.id })
+ticket2.save()
+ticket3 = Ticket.new({ 'customer_id' => customer3.id, 'film_id' => film4.id })
+ticket3.save()
 
-# film3 = Film.new
- 
-# film4 = Film.new
-
-# ticket1 = Ticket.new
-
-# ticket2 = Ticket.new
-
-# ticket3 = Ticket.new
-
+binding.pry
+nil
