@@ -17,7 +17,8 @@ class Film
         VALUES
         ($1, $2) RETURNING id"
         values = [@title, @price]
-        
+        result = SqlRunner.run(sql, values).first
+        @id = result['id'].to_i
     end
 
 end
