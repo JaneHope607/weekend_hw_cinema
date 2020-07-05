@@ -84,10 +84,10 @@ class Customer
 
     def buy_ticket(film)
         return if !sufficient_funds?(film)
-        new_ticket = Ticket.new({ 'customer_id' => @id, 'film_id' => film.id })
-        new_ticket.save()
         remove_funds(film)
         update()
+        # new_ticket = Ticket.new({ 'customer_id' => @id, 'film_id' => film.id })
+        # new_ticket.save()
     end
 
 end
