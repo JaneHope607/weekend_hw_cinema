@@ -52,4 +52,13 @@ class Ticket
         SqlRunner.run(sql, values)
     end
 
+    def get_ticket(customer, film)
+        sql = "SELECT * FROM tickets"
+    end
+
+    def sell_ticket(customer, film)
+        sql = "INSERT INTO tickets
+        "
+    end
+
 end

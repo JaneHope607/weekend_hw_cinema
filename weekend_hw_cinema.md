@@ -32,7 +32,7 @@ It's enough if you can call your methods in pry, don't worry about an interface.
   - Create a screenings table that lets us know what time films are showing
   - Write a method that finds out what is the most popular time (most tickets sold) for a given film
   - Limit the available tickets for screenings.
-  - Add any other extensions you think would be great to have at a cinema!
+  <!-- - Add any other extensions you think would be great to have at a cinema! -->
 
 ### PDA Reminder:
 

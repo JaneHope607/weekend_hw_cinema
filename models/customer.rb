@@ -39,10 +39,6 @@ class Customer
         return Customer.map_items(customer_list)
     end
 
-    def self.map_items(data)
-        return data.map { |customer| Customer.new(customer) }
-    end
-
     def update()
         sql = "UPDATE customers
         SET (name, funds)
@@ -50,6 +46,41 @@ class Customer
         WHERE id = $3"
         values = [@name, @funds, @id]
         SqlRunner.run(sql, values)
+    end
+
+    def films()
+        sql = "SELECT films.* FROM films
+        INNER JOIN tickets ON
+        tickets.film_id = films.id
+        WHERE customer_id = $1"
+        values = [@id]
+        films = SqlRunner.run(sql, values)
+        return Film.map_items(films)
+    end
+
+    def self.map_items(data)
+        return data.map { |customer| Customer.new(customer) }
+    end
+
+    def tickets()
+        sql = "SELECT * FROM tickets
+        WHERE customer_id = $1"
+        values = [@id]
+        tickets = SqlRunner.run(sql, values)
+        return Ticket.map_items(tickets)
+    end
+
+    def count_tickets()
+        return self.tickets.count()
+    end
+
+    def funds(film)
+        return true if @funds > film.price
+        return false if @funds < film.price
+    end
+
+    def buy_ticket(film)
+        return @funds -= film.price
     end
 
 end
