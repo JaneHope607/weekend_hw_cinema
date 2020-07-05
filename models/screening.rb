@@ -81,4 +81,7 @@ class Screening
         return @seats_available -= count_tickets_bought
     end
 
+    def
+    end
+
 end

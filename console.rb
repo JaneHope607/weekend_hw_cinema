@@ -38,6 +38,9 @@ screening2.save()
 screening3 = Screening.new({ 'film_id' => film2.id, 'time' => '15:30', 'seats_available' => '55'})
 screening3.save()
 
+screening4 = Screening.new({ 'film_id' => film2.id, 'time' => '19:45', 'seats_available' => '55'})
+screening4.save()
+
 ticket1 = Ticket.new({ 'customer_id' => customer2.id, 'film_id' => film1.id, 'screening_id' => screening1.id })
 ticket1.save()
 ticket2 = Ticket.new({ 'customer_id' => customer1.id, 'film_id' => film4.id, 'screening_id' => screening2.id })
