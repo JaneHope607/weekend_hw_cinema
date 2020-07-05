@@ -61,4 +61,21 @@ class Screening
         SqlRunner.run(sql)
     end
 
+    def capacity()
+        return @seats_available >= 0
+    end
+
+    def tickets()
+        sql = "SELECT * FROM tickets
+        WHERE screening_id = $1"
+        values = [@id]
+        tickets = SqlRunner.run(sql, values)
+        return Screening.map_items(tickets)
+    end
+
+    # def reduce_seats()
+    #     customer.buy_ticket
+    #     return @seats_available -= 
+    # end
+
 end
