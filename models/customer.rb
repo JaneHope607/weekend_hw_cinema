@@ -86,8 +86,9 @@ class Customer
         return if !sufficient_funds?(film)
         remove_funds(film)
         update()
-        # new_ticket = Ticket.new({ 'customer_id' => @id, 'film_id' => film.id })
-        # new_ticket.save()
+        new_ticket = Ticket.new({ 'customer_id' => @id, 'film_id' => film.id })
+        new_ticket.save()
+        return new_ticket
     end
 
 end
