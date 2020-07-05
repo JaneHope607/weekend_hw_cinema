@@ -18,7 +18,7 @@ class Customer
         RETURNING id"
         values = [@name, @funds]
         result = SqlRunner.run(sql, values).first
-        @id = user['id'].to_i
+        @id = result['id'].to_i
     end
 
 end
