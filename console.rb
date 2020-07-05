@@ -8,6 +8,7 @@ require('pry-byebug')
 Customer.delete_all()
 Film.delete_all()
 Ticket.delete_all()
+Screening.delete_all()
 
 customer1 = Customer.new({ 'name' => 'Darren Smith', 'funds' => '30' })
 customer1.save()
@@ -50,6 +51,9 @@ screening2.save()
 
 # film1.price = '14'
 # film1.update()
+
+# screening2.time = '17:30'
+# screening2.update()
 
 binding.pry
 nil
