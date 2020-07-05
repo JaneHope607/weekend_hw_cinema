@@ -12,6 +12,14 @@ class Screening
         @seats_available = options['seats_available'].to_i
     end
 
-    def
+    def save()
+        sql = "INSERT INTO screenings
+        (film_id, time, seats_available)
+        VALUES ($1, $2, $3)
+        RETURNING id"
+        values = [@film_id, @time, @seats_available]
+        result = SqlRunner.run(sql, values).first
+        @id = result['id'].to_i
+    end
 
 end
