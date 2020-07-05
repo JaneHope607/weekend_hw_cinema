@@ -74,12 +74,20 @@ class Customer
         return self.tickets.count()
     end
 
-    def remove_funds(cost)
-        return @funds -= cost
+    def remove_funds(film)
+        return @funds -= film.price.to_i
     end
 
-    def sufficient_funds(film)
-        return 
+    def sufficient_funds?(film)
+        return @funds >= film.price.to_i
+    end
+
+    def buy_ticket(film)
+        return if !sufficient_funds?(film)
+        new_ticket = Ticket.new({ 'customer_id' => @id, 'film_id' => film.id })
+        new_ticket.save()
+        remove_funds(film)
+        update()
     end
 
 end
