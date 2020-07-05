@@ -90,4 +90,14 @@ class Screening
         return result.price.to_i
     end
 
+    def film_title()
+        sql = "SELECT * FROM films
+        WHERE id = $1"
+        values = [@film_id]
+        films = SqlRunner.run(sql, values)
+        result = Film.map_items(films).first
+        return result.title
+    end
+
+
 end

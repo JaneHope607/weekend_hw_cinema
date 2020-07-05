@@ -107,7 +107,7 @@ class Customer
         new_ticket.save()
         screening.reduce_seats()
         screening.update()
-        return new_ticket
+        return "You are going to see #{screening.film_title}"
     end
 
 end
